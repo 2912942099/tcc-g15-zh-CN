@@ -2,6 +2,11 @@
 
 [中文汉化版下载地址](https://github.com/2912942099/tcc-g15-zh-CN)（注意：应用程序需要管理员权限）
 
+<img width="400" alt="主界面" src="https://github.com/user-attachments/assets/beb92c93-9891-44e1-a5e6-461888db7053" />
+
+&nbsp;
+<img width="150" alt="托盘菜单" src="https://github.com/user-attachments/assets/224b8654-271b-4a4d-a032-2e58387303e9" />
+
 基于 [AlexIII/tcc-g15](https://github.com/AlexIII/tcc-g15) 的中文汉化版本
 
 原项目是 Alienware Control Center (AWCC) 的开源替代品
