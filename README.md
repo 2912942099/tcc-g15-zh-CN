@@ -6,11 +6,9 @@
 
 原项目是 Alienware Control Center (AWCC) 的开源替代品
 
-[原项目地址](https://github.com/AlexIII/tcc-g15) | [原项目地址](https://github.com/AlexIII/tcc-g15/releases)
+[原项目地址](https://github.com/AlexIII/tcc-g15)
 
 ## 支持机型
-
-系统要求：Windows 10/11
 
 已确认支持的机型（用户反馈）：
 - Dell G15：5511、5515、5520、5525、5530、5535、5590
@@ -37,12 +35,6 @@
 2. 托盘图标右键可切换模式、启用/禁用开机自启
 3. 双击托盘图标可打开主界面
 4. 主界面可查看温度、风扇转速，调整安全保护阈值
-
-### 托盘图标说明
-
-托盘图标四角的小圆点表示 G 模式状态：
-- 无圆点：G 模式关闭
-- 有圆点：G 模式开启
 
 ### 安全保护
 
