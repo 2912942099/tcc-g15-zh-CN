@@ -1,10 +1,12 @@
-# Dell G15 散热控制中心
+# Dell G15 tcc-g15散热控制中心
+
+[中文下载地址](https://github.com/2912942099/tcc-g15-zh-CN))
 
 基于 [AlexIII/tcc-g15](https://github.com/AlexIII/tcc-g15) 的中文汉化版本
 
 原项目是 Alienware Control Center (AWCC) 的开源替代品
 
-[原项目地址](https://github.com/AlexIII/tcc-g15) | [原项目下载地址](https://github.com/AlexIII/tcc-g15/releases)
+[原项目地址](https://github.com/AlexIII/tcc-g15) | [原项目地址](https://github.com/AlexIII/tcc-g15/releases)
 
 ## 支持机型
 
