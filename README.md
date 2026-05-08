@@ -1,142 +1,56 @@
-# Thermal Control Center for Dell G15 (and others)
+# Dell G15 散热控制中心
 
-Open-source alternative to AWCC*
+基于 [AlexIII/tcc-g15](https://github.com/AlexIII/tcc-g15) 的中文汉化版本
 
-[Download link](https://github.com/AlexIII/tcc-g15/releases) *(Note: the app requires administrator privileges)*
+原项目是 Alienware Control Center (AWCC) 的开源替代品
 
-<img src="./screen-1.png" alt="Screenshot 1" width="600" />
+[原项目地址](https://github.com/AlexIII/tcc-g15) | [原项目下载地址](https://github.com/AlexIII/tcc-g15/releases)
 
-<img src="./screen-2.png" alt="Screenshot 2" width="170" />
+## 支持机型
 
-<br/>
+系统要求：Windows 10/11
 
-> Liked the app? Glad you did! 😸 Help by spreading the word 🚀 and leaving the project a star ⭐
-
-> Didn't work out for you? Please report the problem by creating an [issue](https://github.com/AlexIII/tcc-g15/issues). Feedback is always welcome!
-
-**AWCC - "Alienware Control Center" is an app for thermal control that Dell ships with their G-series notebooks.*
-
-## Target Platform
-
-OS: Windows 10/11.
-
-Supported models (as reported by the users):
-- Dell G15: 5511, 5515, 5520, 5525, 5530, 5535, 5590
+已确认支持的机型（用户反馈）：
+- Dell G15：5511、5515、5520、5525、5530、5535、5590
 - Dell Alienware m16 R1
-- Dell G3 3590, G3 15 3500
+- Dell G3 3590、G3 15 3500
 - Dell Alienware 16X Aurora
 
-May also work on other Dell G15 / Alienware laptops.
+其他 Dell G15 / Alienware 笔记本也可能兼容。
 
-Please report if it worked / didn't work for you. Your feedback is highly appreciated.
+如果你测试过是否可用，欢迎反馈。
 
-## What It Can Do
+## 功能
 
-- ✔️ Switch thermal mode between G-mode, Balanced, and Custom
-- ✔️ Show GPU/CPU temperature and fan speed
-- ✔️ Semi-manual fan speed control
-- ✔️ Option to automatically enable G-mode when GPU/CPU temperature reaches critical
-- ✔️ Support for keyboard G-mode hotkey
+- 切换散热模式（均衡模式 / G模式 / 自定义）
+- 显示 GPU/CPU 温度和风扇转速
+- 半手动风扇转速控制
+- 高温自动切换 G 模式（安全保护）
+- 支持键盘 G 模式热键（Fn+F9）
+- 开机自启（默认禁用）
 
-## UI hints
+## 使用说明
 
-- The white dots ("stars") in the corners of the tray icon indicate current G mode state.
+1. 下载 exe 文件，以管理员身份运行
+2. 托盘图标右键可切换模式、启用/禁用开机自启
+3. 双击托盘图标可打开主界面
+4. 主界面可查看温度、风扇转速，调整安全保护阈值
 
-    <img src="./g_off.png" alt="g_off" width="40" align="center" />
-    G mode is Off
-    <br>
-    <img src="./g_on.png" alt="g_on" width="40" align="center" />
-    G mode is On
+### 托盘图标说明
 
-- Hover mouse pointer over a UI element to see its description
+托盘图标四角的小圆点表示 G 模式状态：
+- 无圆点：G 模式关闭
+- 有圆点：G 模式开启
 
-## Limitations
+### 安全保护
 
-- Requires admin system privileges (to access WMI interface)
-- Manual fan control is not *really* manual. If you set fan speed too low, the BIOS will take over and raise the fan speed automatically when the GPU/CPU temperature reaches a certain point to prevent overheating.
-- **"Autorun on startup" feature may not work for you.** The autorun adds a task to the Windows Task Scheduler that should start the app on first sign-in after a reboot, but it may fail to run the app due to the system's security policy. You can try other approaches to make the app autostart on your system. [Check out this issue.](https://github.com/AlexIII/tcc-g15/issues/7)
-- On rare occasions, the driver may report bogus GPU temperature. [See this issue.](https://github.com/AlexIII/tcc-g15/issues/9)
-- Switching the thermal mode to "G-mode" and back **may result in a second-long system-wide freeze** (at the exact moment when the switch is happening). This is a known issue with Dell's thermal control interface. Cannot be fixed. Make sure to disable the fail-safe feature if you don't want the app to switch the thermal mode automatically.
+当 GPU 温度 ≥ 85°C 或 CPU 温度 ≥ 95°C 持续 8 秒后，自动切换到 G 模式（风扇全速）。温度恢复正常 60 秒后自动恢复原模式。可在主界面调整温度阈值。
 
-## Why AWCC is BAD
+### 卸载说明
 
-- ❌ AWCC has no in-program option to enable/disable G-mode
-- ❌ AWCC manual fan control is broken at this moment
-- ❌ AWCC is a bulky, slow, and visually noisy app that can't even handle basic functions
-- ❌ [AWCC is spying on you](#about-the-awcc-telemetry)
-- ❌ AWCC sometimes randomly crashes and throws crash reports
+如需卸载，请先在托盘菜单中**禁用开机自启**，再删除 exe 文件，否则会有残留的计划任务和配置文件。
 
-If this alternative works out for you, you can safely remove from your PC:
-
-- Alieanware CC Components
-- Alieanware Command Center Suite
-- Alieanware OC Controls
-
-## How It Works
-
-It is a PyQt-based GUI for the WMI Dell thermal control interface.
-
-I have somewhat documented my findings on the WMI [here](WMI-AWCC-doc.md).
-
-## How to Run from the Source
-
-```
-python3 -m pip install -r ./requirements.txt
-python3 src\tcc-g15.py
-```
-
-## About the AWCC Telemetry
-
-I know it's probably not going to surprise anyone, given the times we're living in, 
-but AWCC silently sends some telemetry without the possibility of opting out.
-
-The telemetry is being sent to these URLs:
-
-```
-https://tm-sdk.platinumai.net
-https://qa-external-tm.plawebsvc01.net
-```
-
-## Credits
-
-Big thanks to the amazing people who have contributed to the project:
-- @AprDeci for code / new features
-- @T7imal, @cemkaya-mpi, @THSLP13, @Terryxtl for testing and debugging
-- @Dtwpurple, @WinterholdPrime, @Dhia-zorai, @fraPCI for compatibility reports
-
-## Changelog
-
-- 1.6.5
-  - Update dependencies (dev)
-  - Update imports (dev)
-  - Fix: handle incompatible mode settings (dev)
-
-- 1.6.4
-  - Fix: do not limit displayed RPM value
-
-- 1.6.3
-  - Add tray icon tooltip (show current temperatures, fan speeds, thermal mode)
-  - Add tray icon G mode indication
-  - Add switching thermal mode from tray context menu
-  - Fix: adaptive tray icon size (fixes blurry tray icon on high resolution screens)
-  - Fix: faster app startup
-
-- 1.6.2
-    - Show GPU/CPU model in the app (fixed from 1.6.1)
-    - Small bug fixes
-
-- 1.6.0
-  - Add support for keyboard G-mode hotkey
-
-- 1.5.4
-  - Fix saving settings on app abnormal exit (system shutdown, etc)
-  - Fix reset to default settings
-
-- 1.5.3
-  - Add trigger delay for fail-safe to smooth-out temp spikes
-
-## License
-
-© github.com/AlexIII
-
-GPL v3
+如已直接删除 exe，可手动清理：
+```cmd
+schtasks /delete /tn "TCC_G15" /f
+del %USERPROFILE%\tcc_g15_task_patched.xml
