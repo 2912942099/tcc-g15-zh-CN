@@ -1,6 +1,6 @@
 # Dell G15 tcc-g15中文汉化版散热控制中心
 
-[中文汉化版下载地址](https://github.com/2912942099/tcc-g15-zh-CN)（注意：应用程序需要管理员权限）
+[中文汉化版下载地址](https://github.com/2912942099/tcc-g15-zh-CN/releases/tag/v1.6.4-zh)（注意：应用程序需要管理员权限）
 
 <img width="400" alt="主界面" src="https://github.com/user-attachments/assets/beb92c93-9891-44e1-a5e6-461888db7053" />
 
